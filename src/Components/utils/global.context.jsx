@@ -1,16 +1,19 @@
-import { createContext, useContext, useReducer } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useReducer } from "react";
+
 
 export const initialState = {theme: true, data: []}
 
 export const ContextGlobal = createContext();
 
 const initialPageState = {
-  theme: true,
+  theme: true, 
   themeDetails: {
     background: 'black',
     color: 'white' 
   },
-  data: []
+  dentistas: [],
+  dentista: {}
 }
 
 
@@ -26,6 +29,10 @@ const pageReducer = (state, action) => {
         theme: !state.theme,
         themeDetails: themeDetails
       };
+    case 'GET_LIST':
+      return {...state, dentistas: [action.payload]}
+    case 'GET_USER': 
+      return {...state, dentista: action.payload}
     default:
       throw new Error();
   }
@@ -34,9 +41,14 @@ const pageReducer = (state, action) => {
 export const ContextProvider = ({ children }) => {
   const [pageState, pageDispatch] = useReducer(pageReducer, initialPageState)
 
-  const switchTheme = () => {
-    pageDispatch({ type: "SWITCH_THEME" });
-  };
+  const urlList = `https://jsonplaceholder.typicode.com/users`
+
+  useEffect(() => {
+    axios(urlList)
+      .then(res => {
+        pageDispatch({ type: 'GET_LIST', payload: res.data});
+      })
+  }, [urlList]);
 
   return (
     <ContextGlobal.Provider value={{pageState, pageDispatch}}>

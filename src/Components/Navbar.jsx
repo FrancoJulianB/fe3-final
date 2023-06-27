@@ -11,7 +11,7 @@ const Navbar = () => {
   const switchTheme = () => {
     pageDispatch({ type: "SWITCH_THEME" });
   };
-  console.log(pageState);
+
   return (
       <nav>
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}

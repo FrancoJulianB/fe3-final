@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   const {pageState} = usePage();
-  console.log(pageState.themeDetails);
+  console.log(pageState);
   return (
     <div className= 'app' style={pageState.themeDetails}>
       <Navbar />
