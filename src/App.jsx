@@ -19,7 +19,7 @@ function App() {
   return (
 
     <Router>
-      <div className="App" style={pageState.themeDetails}>
+      <div className={`app ${appClassName}`}>
         <Navbar />
         <Routes>
           <Route path="/contact" element={<Contact/>} />
