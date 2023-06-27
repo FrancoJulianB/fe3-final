@@ -20,14 +20,13 @@ const initialPageState = {
 const pageReducer = (state, action) => {
   switch (action.type) {
     case "SWITCH_THEME":
-      const themeDetails = {
-        background: state.theme ? 'black' : 'white',
-        color: state.theme ? 'white' : 'black'
-      };
       return {
         ...state,
         theme: !state.theme,
-        themeDetails: themeDetails
+        themeDetails: {
+          background: state.theme ? 'black' : 'white',
+          color: state.theme ? 'white' : 'black'
+        }
       };
     case 'GET_LIST':
       return {...state, dentistas: [action.payload]}

@@ -7,8 +7,10 @@ import './App.css'
 function App() {
   const {pageState} = usePage();
   console.log(pageState);
+  const appClassName = pageState.theme ? 'dark-theme' : 'light-theme';
+
   return (
-    <div className= 'app' style={pageState.themeDetails}>
+    <div className={`app ${appClassName}`}>
       <Navbar />
       <Footer />
     </div>

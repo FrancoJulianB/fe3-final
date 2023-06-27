@@ -9,6 +9,7 @@ const Navbar = () => {
   const { pageState, pageDispatch } = usePage();
 
   const switchTheme = () => {
+    console.log(pageState);
     pageDispatch({ type: "SWITCH_THEME" });
   };
 
