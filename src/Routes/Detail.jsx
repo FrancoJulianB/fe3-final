@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { usePage } from '../Components/utils/global.context'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -8,21 +10,27 @@ const Detail = () => {
  
   const {pageState, pageDispatch} = usePage()
     const {id} = useParams()
-    console.log(id)
-    const urlUser = 'https://jsonplaceholder.typicode.com/users/:id' + id
+    const urlUser = 'https://jsonplaceholder.typicode.com/users/' + id
     
     useEffect(() => {
         axios(urlUser)
         .then(res => {
-            console.log(res)
             pageDispatch({type: 'GET_USER', payload: res.data})
         })
     }, [])
 
+    const dentista = pageState.dentista
+    console.log(dentista);
   return (
     <>
-      <h1>Detail Dentist id </h1>
+      <h1>{dentista.name}</h1>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
+      <p>Email: {dentista.email}</p>
+      <p>Telefono: {dentista.phone}</p>
+      <p>Website: {dentista.website}</p>
+      
+        
+      
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
     </>
   )
