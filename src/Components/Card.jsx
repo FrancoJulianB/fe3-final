@@ -5,11 +5,10 @@ import { usePage } from "./utils/global.context";
 
 const Card = ({ name, username, id, email }) => {
   const { pageState } = usePage();
-  const addFav = ()=>{
+  const addFav = () => { 
     
- 
   }
-  console.log(pageState);
+
   return (
     
     <div className="card">
