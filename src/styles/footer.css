@@ -1,0 +1,14 @@
+footer{
+    display: flex;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    bottom: 0;
+    width: 90%;
+    height: 40px;
+    margin-top: 10% !important;
+    margin-left: 50px !important;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
