@@ -13,7 +13,6 @@ import Favs from './Routes/Favs';
 
 function App() {
   const {pageState} = usePage();
-  console.log(pageState);
   const appClassName = pageState.theme ? 'dark-theme' : 'light-theme';
 
   return (
