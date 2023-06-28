@@ -1,5 +1,23 @@
 * {
 	padding: 0px;
 	margin: 0;
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 }
+
+.card {
+	padding: 2em;
+  }
+  
+  .read-the-docs {
+	color: #888;
+  }
+  
+  .dark-theme {
+	background-color: #12121296;
+	color: white;
+  }
+  
+  .light-theme {
+	background: white;
+	color: black;
+  }
