@@ -1,37 +1,50 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
+const localState = localStorage.getItem("state");
 
-export const initialState = {theme: true, data: []}
+const setStateInStorage = (state) =>
+localStorage.setItem("state", JSON.stringify(state));
 
 export const ContextGlobal = createContext();
 
-const initialPageState = {
-  theme: true, 
-  themeDetails: {
-    background: 'black',
-    color: 'white' 
-  },
-  dentistas: [],
-  dentista: {}
+const initialPageState = () => {
+  if(localState){
+    return JSON.parse(localState);
+  } else{
+    return {
+      theme: true, 
+      themeDetails: {
+      background: 'black',
+      color: 'white' 
+      },
+      dentistas: [],
+      dentista: {}
+    }
+  }
+  
 }
+
 
 
 const pageReducer = (state, action) => {
   switch (action.type) {
     case "SWITCH_THEME":
-      const themeDetails = {
-        background: state.theme ? 'black' : 'white',
-        color: state.theme ? 'white' : 'black'
-      };
-      return {
+      const newState = {
         ...state,
         theme: !state.theme,
-        themeDetails: themeDetails
+        themeDetails: {
+          background: state.theme ? "black" : "white",
+          color: state.theme ? "white" : "black"
+        }
       };
+      setStateInStorage(newState);
+      return newState;
     case 'GET_LIST':
+      setStateInStorage({...state, dentistas: [action.payload]})
       return {...state, dentistas: [action.payload]}
     case 'GET_USER': 
+    setStateInStorage({...state, dentista: action.payload})
       return {...state, dentista: action.payload}
     default:
       throw new Error();
@@ -39,9 +52,10 @@ const pageReducer = (state, action) => {
 };
 
 export const ContextProvider = ({ children }) => {
-  const [pageState, pageDispatch] = useReducer(pageReducer, initialPageState)
+  const [pageState, pageDispatch] = useReducer(pageReducer, initialPageState())
 
   const urlList = `https://jsonplaceholder.typicode.com/users`
+
 
   useEffect(() => {
     axios(urlList)

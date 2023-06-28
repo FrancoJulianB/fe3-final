@@ -8,13 +8,12 @@ import { Link, useParams } from 'react-router-dom'
 const Home = () => {
 
   const {pageState} = usePage()
-  const params = useParams()
-
+  const dentistas = pageState.dentistas[0]
   return (
     <main className="" >
       <h1>Home</h1>
       <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
+        {dentistas.map(dentista => <Card  name={dentista.name} username={dentista.username} id={dentista.id} email={dentista.email}/>)}
       </div>
     </main>
   )
