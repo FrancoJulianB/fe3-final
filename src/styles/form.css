@@ -54,3 +54,7 @@
 	text-align: center; /* Agregado para centrar el contenido */
 
 }
+
+form{
+	height: 100% !important;
+}
