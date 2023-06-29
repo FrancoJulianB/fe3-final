@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ContextProvider, usePage } from './Components/utils/global.context';
+import { usePage } from './Components/utils/global.context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
