@@ -12,12 +12,19 @@ import Favs from './Routes/Favs';
 
 function App() {
   const {pageState} = usePage();
-  const appClassName = pageState.theme ? 'dark-theme' : 'light-theme';
+  const appClassName = () => {
+    if (pageState.theme){
+    return 'dark-theme'
+    } else{
+    return 'light-theme'
+    }
+  }
+  
 
   return (
 
     <Router>
-      <div className={`app ${appClassName}`}>
+      <div className={`app ${appClassName()}`}>
         <Navbar />
         <Routes>
           <Route path="/contact" element={<Contact/>} />

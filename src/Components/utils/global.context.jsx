@@ -37,7 +37,8 @@ const pageReducer = (state, action) => {
           color: state.theme ? "white" : "black"
         }
       };
-      return setStateInStorage(newState);
+      setStateInStorage(newState);
+      return newState
     case 'GET_LIST':
       setStateInStorage({
         theme: state.theme, 
@@ -69,7 +70,6 @@ const pageReducer = (state, action) => {
     case 'FAV':
       const favIndex = state.favs.findIndex((obj) =>
       obj.id === action.payload.id)
-      console.log(favIndex);
       if(favIndex !== -1){
         const updatedFavs = [...state.favs];
         updatedFavs.splice(favIndex, 1);

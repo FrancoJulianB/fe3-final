@@ -9,7 +9,7 @@ const Home = () => {
 
   const {pageState} = usePage()
   const dentistas = pageState.dentistas
-  console.log(pageState);
+  
   return (
     <main className="" >
       <h1>Home</h1>

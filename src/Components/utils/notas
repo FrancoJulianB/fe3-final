@@ -1,0 +1,64 @@
+const initialPageState = () => {
+  if(localState){
+    return JSON.parse(localState);
+  } else{
+    return {
+      theme: true, 
+      themeDetails: {
+      background: 'black',
+      color: 'white' 
+      },
+      dentistas: [],
+      favs: [],
+      dentista: {},
+    }
+  }
+}
+
+const pageReducer = (state, action) => {
+  switch (action.type) {
+    case "SWITCH_THEME":
+      const newState = {
+        dentistas: state.dentistas,
+        favs: state.favs,
+        dentista: dentista.dentista,
+        theme: !state.theme,
+        themeDetails: {
+          background: state.theme ? "black" : "white",
+          color: state.theme ? "white" : "black"
+        }
+      };
+      return setStateInStorage(newState);
+    case 'GET_LIST':
+      return setStateInStorage({theme: state.theme, 
+        themeDetails: state.themeDetails,
+        dentistas: action.payload,
+        favs: state.favs,
+        dentista: dentista.dentista
+      })
+    case 'GET_USER': 
+      return setStateInStorage({theme: state.theme, 
+        themeDetails: state.themeDetails,
+        dentistas: state.dentistas,
+        favs: state.favs,
+        dentista: action.payload
+      })
+    case 'FAV':
+      if(state.favs.find(action.payload)){
+        state.favs.filter(item => item.id !== action.payload.id)
+        return setStateInStorage({theme: state.theme, 
+          themeDetails: state.themeDetails,
+          dentistas: state.dentistas,
+          dentista: dentista.dentista,
+          favs: [state.favs.filter(item => item.id !== action.payload.id)]})
+      } else{
+        return setStateInStorage({theme: state.theme, 
+          themeDetails: state.themeDetails,
+          dentistas: state.dentistas,
+          dentista: dentista.dentista,
+          favs: [...state.favs, action.payload]})
+      }
+    default:
+      throw new Error();
+  }
+};
