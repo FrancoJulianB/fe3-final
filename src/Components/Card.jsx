@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from 'react-router-dom'
 import { usePage } from "./utils/global.context";
+import axios from "axios";
 
 
 const Card = ({ name, username, id, email }) => {
-  const { pageState } = usePage();
+  const {pageState, pageDispatch} = usePage()
+  const urlUser = 'https://jsonplaceholder.typicode.com/users/' + id
+
+  const dentista = {}
+  
   const addFav = ()=>{
     
- 
+      axios(urlUser)
+      .then(res => {
+        pageDispatch({type: 'FAV', payload: res.data})
+      })
   }
-  console.log(pageState);
+  
+  
+
   return (
     
     <div className="card">

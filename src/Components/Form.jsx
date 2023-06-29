@@ -28,8 +28,6 @@ const Form = () => {
       return;
     }
 
-    console.log("Datos del formulario:", formData);
-
     const successMessage = `Gracias ${formData.firstName}, te contactaremos lo antes posible vía email.`;
     alert(successMessage);
 
