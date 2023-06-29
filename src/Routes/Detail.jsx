@@ -20,7 +20,7 @@ const Detail = () => {
     }, [])
 
     const dentista = pageState.dentista
-    console.log(dentista);
+
   return (
     <>
       <h1>{dentista.name}</h1>
