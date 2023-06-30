@@ -55,6 +55,9 @@ footer > p{
   margin: 0;
   padding-top: 0.7rem;
 }
+.dark-theme .logo{
+  filter: invert(100%);
+}
 
 form{
   display: flex;
@@ -78,6 +81,12 @@ form{
   border-radius: 8px;
   border: 1px solid rgba(23, 103, 183, 0.2);
   background-color: rgba(130, 184, 238, 0.2);
+}
+
+.card img{
+  width: 150px;
+  height: 150px;
+  margin: 20px 0px;
 }
 
 .dark-theme .card h1,
@@ -142,6 +151,10 @@ tr:nth-child(even) {
 
 
 /*Estilos para los theme button*/
+
+.switch-button{
+  margin-right: 2rem;
+}
 
 .checkbox {
   opacity: 0;
