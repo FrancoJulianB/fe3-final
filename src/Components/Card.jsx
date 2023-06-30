@@ -3,9 +3,7 @@ import { Link} from 'react-router-dom'
 import { usePage } from "./utils/global.context";
 import axios from "axios";
 import { FaHeart } from 'react-icons/fa/index.esm';
-import doctorImage from '../path/to/doctor.jpg';
-import messiImage from '../path/to/messi.gif';
-import reversedMessiImage from '../path/to/reversed-messi.gif';
+
 
 const Card = ({ name, username, id, email }) => {
   const {pageState, pageDispatch} = usePage()
@@ -31,16 +29,15 @@ const Card = ({ name, username, id, email }) => {
     return pageState.favs.some((fav) => fav.id === id);
   }
 
-  const handleSource = () => {
-    if (isTransitioning && isFav()) {
-      return messiImage;
-    } else if (isTransitioning && !isFav()) {
-      return reversedMessiImage;
+  const handleSource = () =>{
+    if (isTransitioning && isFav()){
+      return "images/messi.gif"
+    } else if(isTransitioning && !isFav()){
+      return "images/reversed-messi.gif"
     } else {
-      return doctorImage;
+      return "images/doctor.jpg"
     }
-  };
-  
+  }
   
 
   return (
