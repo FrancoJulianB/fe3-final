@@ -5,13 +5,20 @@ import "../styles/navbar.css";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
-
 const Navbar = () => {
   const { pageState, pageDispatch } = usePage();
 
   const switchTheme = () => {
     pageDispatch({ type: "SWITCH_THEME" });
   };
+
+  const className = () => {
+    if (pageState.theme){
+    return 'dark-theme'
+    } else{
+    return 'light-theme'
+    }
+  }
 
   return (
 
@@ -31,11 +38,14 @@ const Navbar = () => {
       </div>
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
-    <div className='switch-theme'>
-      <input type="checkbox" id="dark-mode" onChange={switchTheme}/>
-      <label for="dark-mode"></label>
-      <div class="background"></div>
-    </div>
+      <div className='switch-button'>
+        <input type="checkbox" className="checkbox" id="checkbox" onChange={switchTheme} />
+        <label htmlFor="checkbox" className="checkbox-label">
+          <i className="fas fa-moon"></i>
+          <i className="fas fa-sun"></i>
+          <span className={`ball ${className()}`}></span>
+        </label>
+      </div>
       
     </nav>
     
