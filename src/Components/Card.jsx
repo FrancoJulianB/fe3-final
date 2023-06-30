@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link} from 'react-router-dom'
 import { usePage } from "./utils/global.context";
 import axios from "axios";
-import { FaHeart } from 'react-icons/fa';
-
+import { FaHeart } from 'react-icons/fa/index.esm';
 
 const Card = ({ name, username, id, email }) => {
   const {pageState, pageDispatch} = usePage()
