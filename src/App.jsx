@@ -30,6 +30,7 @@ function App() {
           <Route path="/dentista/:id" element={<Detail/>} />
           <Route path="/favs" element={<Favs/>} />
           <Route path="/home" element={<Home/>} />
+          <Route path="" element={<Home/>} />
         </Routes>
         <Footer />
       </div>
