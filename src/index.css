@@ -80,6 +80,12 @@ form{
   background-color: rgba(130, 184, 238, 0.2);
 }
 
+.card img{
+  width: 150px;
+  height: 150px;
+  margin: 20px 0px;
+}
+
 .dark-theme .card h1,
 .dark-theme .card h3,
 .dark-theme .card h4 {
@@ -142,6 +148,10 @@ tr:nth-child(even) {
 
 
 /*Estilos para los theme button*/
+
+.switch-button{
+  margin-right: 2rem;
+}
 
 .checkbox {
   opacity: 0;

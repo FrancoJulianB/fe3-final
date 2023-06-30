@@ -51,7 +51,7 @@ const Card = ({ name, username, id, email }) => {
       <h3>{username}</h3>
       </Link>
       
-      <img style={{width: "100%", height:"100%"}} src={handleSource()} alt={"Dr." + name}/>
+      <img src={handleSource()} alt={"Dr." + name}/>
       <h5>{email}</h5>
       {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
       
