@@ -18,8 +18,8 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.firstName.length < 5) {
-      setErrorMessage("Ingrese un nombre válido");
+    if (formData.firstName.length < 5 || formData.lastName.length < 5) {
+      setErrorMessage("Ingrese un dato válido");
       return;
     }
 
